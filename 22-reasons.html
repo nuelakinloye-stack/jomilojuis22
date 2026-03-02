@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>22 Reasons Why I Love You 💌</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500&family=Quicksand:wght@300;400;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            min-height: 100vh;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+        }
+        
+        .hero-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            overflow: hidden;
+        }
+        
+        .hero-background img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            filter: brightness(0.85) saturate(1.1);
+            animation: slowZoom 25s ease-in-out infinite alternate;
+        }
+        
+        @keyframes slowZoom {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.08); }
+        }
+        
+        .hero-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(255, 215, 0, 0.1) 0%, rgba(106, 13, 173, 0.2) 100%);
+            z-index: -1;
+            backdrop-filter: blur(2px);
+        }
+        
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .floating-hearts span {
+            position: absolute;
+            color: rgba(255, 215, 0, 0.12);
+            font-size: 2.5rem;
+            animation: floatHeart 8s linear infinite;
+            text-shadow: 0 0 20px rgba(255,215,0,0.2);
+        }
+        
+        @keyframes floatHeart {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            15% { opacity: 0.4; }
+            85% { opacity: 0.4; }
+            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+        }
+        
+        .container {
+            max-width: 1000px;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+            margin: 40px auto;
+        }
+        
+        .back-home {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(8px);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            z-index: 100;
+            border: 2px solid rgba(255, 215, 0, 0.4);
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .back-home:hover {
+            transform: scale(1.05);
+            background: rgba(255, 215, 0, 0.25);
+            border-color: #ffd700;
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+        }
+        
+        .header-section {
+            text-align: center;
+            margin-bottom: 50px;
+            animation: fadeInDown 1s ease;
+        }
+        
+        .header-section h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4.5rem;
+            background: linear-gradient(45deg, #ffd700, #8a2be2, #ff69b4, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+        }
+        
+        .header-section .subtitle {
+            color: white;
+            font-size: 1.3rem;
+            background: rgba(0,0,0,0.2);
+            backdrop-filter: blur(4px);
+            padding: 10px 30px;
+            border-radius: 50px;
+            display: inline-block;
+            border: 1px solid rgba(255,215,0,0.3);
+            font-family: 'Quicksand', sans-serif;
+        }
+        
+        .reasons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+        
+        .reason-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 25px 20px;
+            border: 2px solid rgba(255, 215, 0, 0.25);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 1s ease backwards;
+            cursor: pointer;
+            min-height: 180px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .reason-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #ffd700, #8a2be2, #ff69b4, #ffd700);
+            background-size: 300% 100%;
+            animation: shimmer 6s linear infinite;
+            opacity: 0.7;
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 300% 0%; }
+        }
+        
+        .reason-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            border-color: #ffd700;
+            box-shadow: 0 25px 45px rgba(255, 215, 0, 0.3);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .reason-number {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #ffd700;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .reason-number span {
+            width: 35px;
+            height: 35px;
+            background: rgba(255, 215, 0, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #ffd700;
+            font-size: 0.9rem;
+            color: white;
+            backdrop-filter: blur(2px);
+        }
+        
+        .reason-number .emoji-tag {
+            width: auto;
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+        }
+        
+        .reason-text {
+            flex: 1;
+            display: flex;
+            align-items: center;
+        }
+        
+        .reason-text p {
+            color: white;
+            font-size: 1rem;
+            line-height: 1.7;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 400;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+            margin: 0;
+            padding-right: 5px;
+        }
+        
+        .reason-text i {
+            color: #ffd700;
+            margin-right: 8px;
+            font-size: 1.1rem;
+        }
+        
+        .card-footer {
+            margin-top: 15px;
+            display: flex;
+            justify-content: flex-end;
+            opacity: 0.5;
+            transition: opacity 0.3s ease;
+        }
+        
+        .reason-card:hover .card-footer {
+            opacity: 1;
+        }
+        
+        .card-footer span {
+            font-size: 1.2rem;
+            filter: drop-shadow(0 0 5px gold);
+        }
+        
+        .special-message {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            border-radius: 40px;
+            padding: 40px;
+            margin-top: 40px;
+            border: 2px solid rgba(255, 215, 0, 0.4);
+            text-align: center;
+            animation: fadeInUp 1s ease 0.8s backwards;
+        }
+        
+        .special-message h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.8rem;
+            color: #ffd700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+        }
+        
+        .special-message p {
+            color: white;
+            font-size: 1.3rem;
+            line-height: 1.8;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+        }
+        
+        .special-message .signature {
+            margin-top: 30px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: rgba(255, 255, 255, 0.9);
+            border-top: 2px dashed rgba(255,215,0,0.4);
+            padding-top: 25px;
+        }
+        
+        .reason-card:nth-child(odd) {
+            transform: rotate(-0.5deg);
+        }
+        
+        .reason-card:nth-child(even) {
+            transform: rotate(0.5deg);
+        }
+        
+        .reason-card:hover:nth-child(odd),
+        .reason-card:hover:nth-child(even) {
+            transform: translateY(-12px) scale(1.02) rotate(0deg);
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-section h1 {
+                font-size: 3.5rem;
+            }
+            
+            .back-home {
+                top: 10px;
+                left: 10px;
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+            
+            .special-message p {
+                font-size: 1.1rem;
+            }
+            
+            .reason-card {
+                min-height: 160px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .header-section h1 {
+                font-size: 2.8rem;
+            }
+            
+            .reasons-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .reason-card:nth-child(odd),
+            .reason-card:nth-child(even) {
+                transform: rotate(0deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero-background">
+        <img src="image/22reasonswhy.jpeg" alt="Dreamy background with gold and purple hues">
+    </div>
+    <div class="hero-overlay"></div>
+    
+    <div class="floating-hearts">
+        <span style="left: 5%; animation-delay: 0s;">❤️</span>
+        <span style="left: 15%; animation-delay: 2s;">💖</span>
+        <span style="left: 25%; animation-delay: 4s;">💝</span>
+        <span style="left: 35%; animation-delay: 1s;">💕</span>
+        <span style="left: 45%; animation-delay: 3s;">💗</span>
+        <span style="left: 55%; animation-delay: 5s;">💓</span>
+        <span style="left: 65%; animation-delay: 2.5s;">💘</span>
+        <span style="left: 75%; animation-delay: 4.5s;">💞</span>
+        <span style="left: 85%; animation-delay: 1.5s;">❤️‍🔥</span>
+        <span style="left: 95%; animation-delay: 3.5s;">💟</span>
+    </div>
+    
+    <a href="about.html" class="back-home">
+        <span>←</span> Back to Home
+    </a>
+    
+    <div class="container">
+        <div class="header-section">
+            <h1>22 Reasons Why I Love You</h1>
+            <div class="subtitle">Every reason, every moment, every memory 💫</div>
+        </div>
+        
+        <div class="reasons-grid">
+            <div class="reason-card" style="animation-delay: 0.05s;">
+                <div class="reason-number">
+                    <span>01</span>
+                    <span class="emoji-tag">🤍</span>
+                </div>
+                <div class="reason-text">
+                    <p>You're not just my best friend… you're the sister I never had</p>
+                </div>
+                <div class="card-footer">
+                    <span>✨</span>
+                </div>
+            </div>
+            
+            <div class="reason-card" style="animation-delay: 0.1s;">
+                <div class="reason-number">
+                    <span>02</span>
+                    <span class="emoji-tag">😭</span>
+                </div>
+                <div class="reason-text">
+                    <p>You're actually too funny for one person. You make me laugh so effortlessly.</p>
+                </div>
+                <div class="card-footer">
+                    <span>😂</span>
+                </div>
+            </div>
+            
+            <div class="reason-card" style="animation-delay: 0.15s;">
+                <div class="reason-number">
+                    <span>03</span>
+                    <span class="emoji-tag">👂</span>
+                </div>
+                <div class="reason-text">
+                    <p>You're such a good listener. You actually hear me.</p>
+                </div>
+                <div class="card-footer">
+                    <span>🎧</span>
+                </div>
+            </div>
+            
+            <div class="reason-card" style="animation-delay: 0.2s;">
+                <div class="reason-number">
+                    <span>04</span>
+                    <span class="emoji-tag">📣</span>
+                </div>
+                <div class="reason-text">
+                    <p>You hype me up when I'm doubting myself. Personal cheerleader for real 😝</p>
+                </div>
+                <div class="card-footer">
+                    <span>🎉</span>
+                </div>
+            </div>
+            
+            <div class="reason-card" style="animation-delay: 0.25s;">
+                <div class="reason-number">
+                    <span>05</span>
+                    <span class="emoji-tag">💰</span>
+                </div>
+                <div class="reason-text">
+                    <p>You have money… yebooo 🤩🤣</p>
+                </div>
+                <div class="card-footer">
+                    <span>💸</span>
+                </div>
+            </div>
+            
+            <div class="reason-card" style="animation-delay: 0.3s;">
+                <div class="reason-number">
+                    <span>06</span>
+                    <span class="emoji-tag">🌸</span>
+                </div>
+                <div class="reason-text">
+                    <p>You're so consistent. You show up even on slow or weird days. Abeg take your flowers 🌸 you bad, you bad.🫡</p>
+                </div>
+                <div class="card-footer">
+                    <span>🏆</span>
+                </div>
+            </div>
+            
+            <div class="reason-card" style="animation-delay: 0.35s;">
+                <div class="reason-number">
+                    <span>07</span>
+                    <span class="emoji-tag">💪</span>
+                </div>
+                <div class="reason-text">
+                    <p>You're such a strong girl. Life don show you shege but you're still glowing and turning up. (Please cut soap for me 🥹)</p>
+                </div>
+                <div class="card-footer">
+                    <span>🌟</span>
+                </div>
+            </div>
+            
+            <div class="reason-card" style="animation-delay: 0.4s;">
+                <div class="reason-number">
+                    <span>08</span>
+                    <span class="emoji-tag">💭</span>
+                </div>
+                <div class="reason-text">
+                    <p>You remember the little things</p>
+                </div>
+                <div class="card-footer">
+                    <span>🔍</span>
+                </div>
+            </div>
+            
+            <div class="reason-card" style="animation-delay: 0.45s;">
+                <div class="reason-number">
+                    <span>09</span>
+                    <span class="emoji-tag">🫦</span>
+                </div>
+                <div class="reason-text">
+                    <p>You're sooo sexy 🫦 I dey use am show off at this point</p>
+                </div>
+                <div class="card-footer">
+                    <span>💋</span>
+                </div>
+            </div>
+            
+            <div class="reason-card" style="animation-delay: 0.5s;">
+                <div class="reason-number">
+                    <span>10</span>
+                    <span class="emoji-tag">⭐</span>
+                </div>
+                <div class="reason-text">
+                    <p>You make ordinary days feel special. My star girl 🤩❤️</p>
+                </div>
+                <div class="card-footer">
+                    <span>✨</span>
+                </div>
+            </div>
+            
+            <div class="reason-card" style="animation-delay: 0.55s;">
+                <div class="reason-number">
+                    <span>11</span>
+                    <span class="emoji-tag">🤭</span>
+                </div>
+                <div class="reason-text">
+                    <p>You send me videos of you shitting 🤭</p>
+                </div>
+                <div class="card-footer">
+                    <span>🚽</span>
+                </div>
+            </div>
+            
+            <div class="reason-card" style="animation-delay: 0.6s;">
+                <div class="reason-number">
+                    <span>12</span>
+                    <span class="emoji-tag">😌</span>
+                </div>
+                <div class="reason-text">
+                    <p>Friendship with you is so chill. No pressure, no competition, no high-maintenance wahala.</p>
+                </div>
+                <div class="card-footer">
+                    <span>🕊️</span>
+                </div>
+            </div>
+            
+            <div class="reason-card" style="animation-delay: 0.65s;">
+                <div class="reason-number">
+                    <span>13</span>
+                    <span class="emoji-tag">❤️</span>
+                </div>
+                <div class="reason-text">
+                    <p>You celebrate my wins (and everybody's wins) like they're yours. Your heart is too pure.</p>
+                </div>
+                <div class="card-footer">
+                    <span>🎊</span>
+                </div>
+            </div>
+            
+            <div class="reason-card" style="animation-delay: 0.7s;">
+                <div class="reason-number">
+                    <span>14</span>
+                    <span class="emoji-tag">🥰</span>
+                </div>
+                <div class="reason-text">
+                    <p>You always match my energy. Calm for calm, hype for hype 🥰</p>
+                </div>
+                <div class="card-footer">
+                    <span>⚡</span>
+                </div>
+            </div>
+            
+            <div class="reason-card" style="animation-delay: 0.75s;">
+                <div class="reason-number">
+                    <span>15</span>
+                    <span class="emoji-tag">😎</span>
+                </div>
+                <div class="reason-text">
+                    <p>You're actually such a cool girl ughh</p>
+                </div>
+                <div class="card-footer">
+                    <span>🆒</span>
+                </div>
+            </div>
+            
+            <div class="reason-card" style="animation-delay: 0.8s;">
+                <div class="reason-number">
+                    <span>16</span>
+                    <span class="emoji-tag">😭</span>
+                </div>
+                <div class="reason-text">
+                    <p>You're the perfect balance of the friend mama warned me about and the one every family member approves of 😭 I honestly don't know how you do it.</p>
+                </div>
+                <div class="card-footer">
+                    <span>⚖️</span>
+                </div>
+            </div>
+            
+            <div class="reason-card" style="animation-delay: 0.85s;">
+                <div class="reason-number">
+                    <span>17</span>
+                    <span class="emoji-tag">🤣</span>
+                </div>
+                <div class="reason-text">
+                    <p>I can gossip with you 🤣❤️</p>
+                </div>
+                <div class="card-footer">
+                    <span>🗣️</span>
+                </div>
+            </div>
+            
+            <div class="reason-card" style="animation-delay: 0.9s;">
+                <div class="reason-number">
+                    <span>18</span>
+                    <span class="emoji-tag">🥹</span>
+                </div>
+                <div class="reason-text">
+                    <p>You're honest with me. I know so much about you, details that sometimes I don't think I deserve to know and I'm truly grateful for that 🥹❤️</p>
+                </div>
+                <div class="card-footer">
+                    <span>🔐</span>
+                </div>
+            </div>
+            
+            <div class="reason-card" style="animation-delay: 0.95s;">
+                <div class="reason-number">
+                    <span>19</span>
+                    <span class="emoji-tag">🤝</span>
+                </div>
+                <div class="reason-text">
+                    <p>There's no awkwardness or drama with you. No matter how long we don't talk, we pick up like nothing changed</p>
+                </div>
+                <div class="card-footer">
+                    <span>🔄</span>
+                </div>
+            </div>
+            
+            <div class="reason-card" style="animation-delay: 1s;">
+                <div class="reason-number">
+                    <span>20</span>
+                    <span class="emoji-tag">🛡️</span>
+                </div>
+                <div class="reason-text">
+                    <p>You make me feel safe, no judgement. Just us girls</p>
+                </div>
+                <div class="card-footer">
+                    <span>🏠</span>
+                </div>
+            </div>
+            
+            <div class="reason-card" style="animation-delay: 1.05s;">
+                <div class="reason-number">
+                    <span>21</span>
+                    <span class="emoji-tag">🤗</span>
+                </div>
+                <div class="reason-text">
+                    <p>You sit with me in hard moments without trying to rush details out of me, just being there when I need you.</p>
+                </div>
+                <div class="card-footer">
+                    <span>🤍</span>
+                </div>
+            </div>
+            
+            <div class="reason-card" style="animation-delay: 1.1s;">
+                <div class="reason-number">
+                    <span>22</span>
+                    <span class="emoji-tag">💅</span>
+                </div>
+                <div class="reason-text">
+                    <p>I don't even have to try around you. You're just that girl</p>
+                </div>
+                <div class="card-footer">
+                    <span>👑</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="special-message">
+            <h2>For my Jomiloju</h2>
+            <p>22 reasons, but honestly, I could list a thousand more. Every day with you gives me a new reason to love and appreciate you. You're one of a kind, and I'm so grateful you're in my life.</p>
+            <div class="signature">
+                Always and forever, your person ❤️
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.floating-hearts span').forEach((span, index) => {
+            span.style.animationDuration = `${6 + Math.random() * 8}s`;
+        });
+        
+        document.querySelectorAll('.reason-card').forEach(card => {
+            card.addEventListener('click', function() {
+                this.style.transform = 'scale(1.05) rotate(0deg)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 200);
+            });
+        });
+    </script>
+</body>
+</html>

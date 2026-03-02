@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Wishes for Jomiloju 💌</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            min-height: 100vh;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+        }
+        
+        .hero-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            overflow: hidden;
+        }
+        
+        .hero-background img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            filter: brightness(0.8) saturate(1.2);
+            animation: slowZoom 20s ease-in-out infinite alternate;
+        }
+        
+        @keyframes slowZoom {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+        
+        .hero-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(255, 215, 0, 0.15) 0%, rgba(106, 13, 173, 0.4) 100%);
+            z-index: -1;
+            backdrop-filter: blur(3px);
+            animation: overlayPulse 8s ease-in-out infinite alternate;
+        }
+        
+        @keyframes overlayPulse {
+            0% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+        
+        .floating-gold {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .floating-gold span {
+            position: absolute;
+            color: rgba(255, 215, 0, 0.2);
+            font-size: 3rem;
+            animation: floatGold 8s linear infinite;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+        }
+        
+        @keyframes floatGold {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            20% {
+                opacity: 0.5;
+            }
+            80% {
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        .container {
+            max-width: 800px;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+            margin: 40px auto;
+        }
+        
+        .back-home {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            z-index: 100;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+        }
+        
+        .back-home:hover {
+            transform: scale(1.05);
+            background: rgba(255, 215, 0, 0.3);
+            border-color: rgba(255, 215, 0, 0.8);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+        }
+        
+        .birthday-newsletter {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(10px);
+            border-radius: 40px;
+            padding: 50px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(255, 215, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .birthday-newsletter::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 10px;
+            background: linear-gradient(90deg, #ffd700, #ffb347, #8a2be2, #ffd700);
+            background-size: 300% 100%;
+            animation: goldShimmer 5s ease infinite;
+        }
+        
+        @keyframes goldShimmer {
+            0% { background-position: 0% 0%; }
+            50% { background-position: 100% 0%; }
+            100% { background-position: 0% 0%; }
+        }
+        
+        .gold-seal {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #ffd700, #ffb347);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            border: 3px solid white;
+            transform: rotate(15deg);
+            animation: sealGlow 2s ease-in-out infinite;
+        }
+        
+        @keyframes sealGlow {
+            0%, 100% { box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); }
+            50% { box-shadow: 0 15px 30px rgba(255, 215, 0, 0.6); }
+        }
+        
+        .newsletter-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 2px dashed rgba(255, 215, 0, 0.5);
+        }
+        
+        .newsletter-header h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4rem;
+            background: linear-gradient(45deg, #8a2be2, #4a1b6d, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .newsletter-header .date {
+            font-family: 'Playfair Display', serif;
+            color: #ffd700;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+        
+        .newsletter-header .recipient {
+            font-size: 1.5rem;
+            color: #4a1b6d;
+            margin-top: 15px;
+            font-weight: 500;
+            text-shadow: 0 0 10px rgba(255,255,255,0.5);
+        }
+        
+        .newsletter-content {
+            max-height: 500px;
+            overflow-y: auto;
+            padding-right: 20px;
+            scroll-behavior: smooth;
+        }
+        
+        .newsletter-content::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .newsletter-content::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+        }
+        
+        .newsletter-content::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #ffd700, #8a2be2);
+            border-radius: 10px;
+        }
+        
+        .newsletter-content::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, #8a2be2, #ffd700);
+        }
+        
+        .message-section {
+            margin-bottom: 30px;
+        }
+        
+        .message-paragraph {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 25px;
+            position: relative;
+            padding-left: 20px;
+            border-left: 3px solid #ffd700;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 0 20px 20px 20px;
+            backdrop-filter: blur(5px);
+        }
+        
+        .message-paragraph:hover {
+            transform: translateX(5px);
+            border-left-color: #8a2be2;
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .message-paragraph:first-letter {
+            font-size: 2.5rem;
+            font-family: 'Dancing Script', cursive;
+            color: #ffd700;
+            margin-right: 5px;
+        }
+        
+        .gold-highlight {
+            background: linear-gradient(120deg, rgba(255, 215, 0, 0.3) 0%, rgba(255, 215, 0, 0.3) 100%);
+            padding: 0 5px;
+            font-weight: 600;
+            color: #4a1b6d;
+            border-radius: 10px;
+        }
+        
+        .purple-highlight {
+            background: linear-gradient(120deg, rgba(106, 13, 173, 0.2) 0%, rgba(106, 13, 173, 0.2) 100%);
+            padding: 2px 8px;
+            border-radius: 20px;
+            font-weight: 500;
+            color: #4a1b6d;
+        }
+        
+        .emoji-burst {
+            display: inline-block;
+            animation: burst 2s ease infinite;
+        }
+        
+        @keyframes burst {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+        
+        .prayer-card {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(8px);
+            border-radius: 20px;
+            padding: 25px;
+            margin: 30px 0;
+            border: 1px solid rgba(255, 215, 0, 0.4);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .prayer-card h3 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: #8a2be2;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .prayer-card h3 span {
+            font-size: 2rem;
+        }
+        
+        .prayer-list {
+            list-style: none;
+        }
+        
+        .prayer-list li {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+            color: #333;
+        }
+        
+        .prayer-list li::before {
+            content: '✨';
+            position: absolute;
+            left: 0;
+            color: #ffd700;
+            font-size: 1.2rem;
+            filter: drop-shadow(0 0 5px gold);
+        }
+        
+        .ps-section {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(8px);
+            border-radius: 20px;
+            padding: 25px;
+            margin-top: 30px;
+            border: 2px solid #ffd700;
+            position: relative;
+        }
+        
+        .ps-section::before {
+            content: '💌';
+            position: absolute;
+            top: -15px;
+            left: 30px;
+            background: rgba(255, 255, 255, 0.5);
+            padding: 0 10px;
+            font-size: 1.5rem;
+            border-radius: 50px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            backdrop-filter: blur(5px);
+        }
+        
+        .ps-content {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .gold-bar {
+            font-size: 3rem;
+            animation: goldSpin 3s linear infinite;
+            filter: drop-shadow(0 0 10px gold);
+        }
+        
+        @keyframes goldSpin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .ps-text {
+            flex: 1;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #333;
+        }
+        
+        .wig-emoji {
+            text-decoration: line-through;
+            opacity: 0.5;
+            animation: wiggle 0.5s ease infinite;
+            display: inline-block;
+        }
+        
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(5deg); }
+            75% { transform: rotate(-5deg); }
+        }
+        
+        .signature {
+            text-align: right;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px dashed rgba(255, 215, 0, 0.5);
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: #8a2be2;
+        }
+        
+        .signature span {
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
+            color: #ffd700;
+            display: block;
+            margin-top: 5px;
+            text-shadow: 0 0 10px rgba(255,215,0,0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .birthday-newsletter {
+                padding: 30px;
+            }
+            
+            .newsletter-header h1 {
+                font-size: 3rem;
+            }
+            
+            .gold-seal {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+                top: 20px;
+                right: 20px;
+            }
+            
+            .message-paragraph {
+                font-size: 1.1rem;
+                padding: 15px;
+            }
+            
+            .back-home {
+                top: 10px;
+                left: 10px;
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .birthday-newsletter {
+                padding: 20px;
+            }
+            
+            .newsletter-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .gold-seal {
+                position: relative;
+                margin: 0 auto 20px;
+                top: 0;
+                right: 0;
+            }
+        }
+        
+        .newsletter-content {
+            animation: fadeInUp 1s ease;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero-background">
+        <img src="image/homepage1.jpeg" alt="Dreamy abstract background with gold and purple hues">
+    </div>
+    <div class="hero-overlay"></div>
+    
+    <div class="floating-gold">
+        <span style="left: 10%; animation-delay: 0s;">👑</span>
+        <span style="left: 30%; animation-delay: 2s;">💰</span>
+        <span style="left: 50%; animation-delay: 4s;">✨</span>
+        <span style="left: 70%; animation-delay: 1s;">💫</span>
+        <span style="left: 90%; animation-delay: 3s;">🌟</span>
+        <span style="left: 20%; animation-delay: 5s;">💎</span>
+        <span style="left: 80%; animation-delay: 6s;">⭐</span>
+    </div>
+    
+    <a href="about.html" class="back-home">
+        <span>←</span> Back to Home
+    </a>
+    
+    <div class="container">
+        <div class="birthday-newsletter">
+            <div class="gold-seal">
+                🎂
+            </div>
+            
+            <div class="newsletter-header">
+                <h1>Happy Birthday, Jomiloju!</h1>
+                <div class="date">✨ Special Birthday Edition ✨</div>
+                <div class="recipient">To my dearest sister and friend</div>
+            </div>
+            
+            <div class="newsletter-content">
+                <div class="message-section">
+                    <div class="message-paragraph">
+                        Distance and adulthood is being the real ghetto and when I think about it and want to get sad, there's so much assurance that we're going to be okay because of how many experiences we have and how we've been able to come out stronger gives me all the assurance that I need.
+                    </div>
+                    
+                    <div class="message-paragraph">
+                        <span class="purple-highlight">My sister and my friend 🥹</span> I love you soo much. And I'm incredibly proud of you — so so proud of you, you don't even know. I would speak of how amazing you are anywhere and anytime.
+                    </div>
+                    
+                    <div class="message-paragraph">
+                        I promise to always be your cheerleader and one call away friend. <span class="gold-highlight">I love you my Jomz, always and forever ❤️</span>
+                    </div>
+                </div>
+                
+                <div class="prayer-card">
+                    <h3>
+                        <span>🙏</span> My Birthday Prayers for You
+                    </h3>
+                    
+                    <ul class="prayer-list">
+                        <li>I pray that all the visibility you desire on social media begins to locate you effortlessly.</li>
+                        <li>I pray for multiple brand deals, partnerships, and opportunities that align perfectly with who you are.</li>
+                        <li>I pray that from now on, you step fully into your season of ease — no more unnecessary struggle.</li>
+                        <li>May there never be a reason for you to suffer for anything your heart desires.</li>
+                        <li>I pray for abundance in every single area of your life: financially, spiritually, emotionally, creatively.</li>
+                        <li>May doors open for you without stress, and may favour speak for you in rooms you haven't even entered yet.</li>
+                    </ul>
+                </div>
+                
+                <div class="ps-section">
+                    <div class="ps-content">
+                        <div class="gold-bar">🏦</div>
+                        <div class="ps-text">
+                            <p><span class="gold-highlight">Ps:</span> I recently started investing in gold and I must put you on 😌</p>
+                            <p>Hence, <span class="wig-emoji">no wig</span> this year — just gold 😛</p>
+                            <p>We're building inheritance already. <span class="emoji-burst">Your unborn children will thank me</span> 😚😚</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="signature">
+                    With all my love,
+                    <br>Your forever friend
+                    <span>❤️ 🏦 💫</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.querySelectorAll('.message-paragraph').forEach(paragraph => {
+            paragraph.addEventListener('mouseenter', () => {
+                paragraph.style.transform = 'translateX(10px)';
+            });
+            
+            paragraph.addEventListener('mouseleave', () => {
+                paragraph.style.transform = 'translateX(0)';
+            });
+        });
+        
+        const newsletter = document.querySelector('.newsletter-content');
+        newsletter.addEventListener('scroll', () => {
+            const scrollPercentage = (newsletter.scrollTop / (newsletter.scrollHeight - newsletter.clientHeight)) * 100;
+            
+            if (scrollPercentage > 80) {
+                document.querySelector('.gold-seal').style.transform = `rotate(${15 + scrollPercentage}deg) scale(${1 + (scrollPercentage/200)})`;
+            }
+        });
+        
+        setInterval(() => {
+            const seal = document.querySelector('.gold-seal');
+            seal.style.transform = `rotate(${Math.random() * 30 - 15}deg) scale(${1 + Math.random() * 0.1})`;
+        }, 2000);
+        
+        document.querySelectorAll('.floating-gold span').forEach((span, index) => {
+            span.style.animationDuration = `${6 + Math.random() * 6}s`;
+        });
+    </script>
+</body>
+</html>

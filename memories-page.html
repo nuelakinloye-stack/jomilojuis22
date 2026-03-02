@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Core Memories 💫</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500&family=Quicksand:wght@300;400;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            min-height: 100vh;
+            font-family: 'Poppins', sans-serif;
+            padding: 20px;
+            position: relative;
+            background: linear-gradient(135deg, #1a0b2e 0%, #2d1b45 100%);
+        }
+        
+        .floating-memories {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .floating-memories span {
+            position: absolute;
+            color: rgba(255, 215, 0, 0.1);
+            font-size: 2.5rem;
+            animation: floatMemory 10s linear infinite;
+        }
+        
+        @keyframes floatMemory {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            15% { opacity: 0.3; }
+            85% { opacity: 0.3; }
+            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+        }
+        
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+            margin: 40px auto;
+        }
+        
+        .back-home {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(8px);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            z-index: 100;
+            border: 2px solid rgba(255, 215, 0, 0.4);
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .back-home:hover {
+            transform: scale(1.05);
+            background: rgba(255, 215, 0, 0.25);
+            border-color: #ffd700;
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+        }
+        
+        .header-section {
+            text-align: center;
+            margin-bottom: 50px;
+            animation: fadeInDown 1s ease;
+        }
+        
+        .header-section h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4rem;
+            background: linear-gradient(45deg, #ffd700, #8a2be2, #ff69b4, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+        }
+        
+        .header-section .subtitle {
+            color: white;
+            font-size: 1.2rem;
+            background: rgba(0,0,0,0.2);
+            backdrop-filter: blur(4px);
+            padding: 10px 30px;
+            border-radius: 50px;
+            display: inline-block;
+            border: 1px solid rgba(255,215,0,0.3);
+        }
+        
+        .memories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+        
+        .memory-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 0;
+            border: 2px solid rgba(255, 215, 0, 0.25);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 1s ease backwards;
+            cursor: pointer;
+            min-height: 280px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .memory-card.with-image {
+            padding: 0;
+        }
+        
+        .memory-card.without-image {
+            padding: 25px;
+            justify-content: center;
+        }
+        
+        .memory-image {
+            width: 100%;
+            height: 180px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .memory-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+        
+        .memory-card:hover .memory-image img {
+            transform: scale(1.15);
+        }
+        
+        .image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(106,13,173,0.3));
+            pointer-events: none;
+        }
+        
+        .memory-number {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            width: 35px;
+            height: 35px;
+            background: rgba(255, 215, 0, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #4a1b6d;
+            border: 2px solid white;
+            z-index: 2;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        
+        .memory-content {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .memory-card.with-image .memory-content {
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(5px);
+            border-top: 2px solid rgba(255,215,0,0.3);
+        }
+        
+        .memory-text {
+            color: white;
+            font-size: 1rem;
+            line-height: 1.7;
+            font-family: 'Quicksand', sans-serif;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+            margin-bottom: 15px;
+        }
+        
+        .memory-emoji {
+            font-size: 1.5rem;
+            text-align: right;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+            margin-top: auto;
+        }
+        
+        .memory-card:hover .memory-emoji {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+        
+        .memory-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ffd700, #8a2be2, #ff69b4, #ffd700);
+            background-size: 300% 100%;
+            animation: shimmer 6s linear infinite;
+            opacity: 0.7;
+            z-index: 3;
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 300% 0%; }
+        }
+        
+        .memory-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            border-color: #ffd700;
+            box-shadow: 0 25px 45px rgba(255, 215, 0, 0.3);
+        }
+        
+        .memory-card:nth-child(odd) {
+            transform: rotate(-0.3deg);
+        }
+        
+        .memory-card:nth-child(even) {
+            transform: rotate(0.3deg);
+        }
+        
+        .memory-card:hover:nth-child(odd),
+        .memory-card:hover:nth-child(even) {
+            transform: translateY(-12px) scale(1.02) rotate(0deg);
+        }
+        
+        .footer-message {
+            text-align: center;
+            margin-top: 50px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            border-radius: 40px;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            animation: fadeInUp 1s ease 0.5s backwards;
+        }
+        
+        .footer-message p {
+            color: white;
+            font-size: 1.3rem;
+            font-family: 'Dancing Script', cursive;
+            line-height: 1.8;
+        }
+        
+        .footer-message span {
+            color: #ffd700;
+            font-size: 2rem;
+            display: block;
+            margin-top: 15px;
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-section h1 {
+                font-size: 3rem;
+            }
+            
+            .back-home {
+                top: 10px;
+                left: 10px;
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+            
+            .memory-card {
+                min-height: 250px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .header-section h1 {
+                font-size: 2.5rem;
+            }
+            
+            .memories-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .memory-card:nth-child(odd),
+            .memory-card:nth-child(even) {
+                transform: rotate(0deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-memories">
+        <span style="left: 5%; animation-delay: 0s;">📸</span>
+        <span style="left: 15%; animation-delay: 2s;">💭</span>
+        <span style="left: 25%; animation-delay: 4s;">✨</span>
+        <span style="left: 35%; animation-delay: 1s;">🌟</span>
+        <span style="left: 45%; animation-delay: 3s;">💫</span>
+        <span style="left: 55%; animation-delay: 5s;">⭐</span>
+        <span style="left: 65%; animation-delay: 2.5s;">💕</span>
+        <span style="left: 75%; animation-delay: 4.5s;">❤️</span>
+        <span style="left: 85%; animation-delay: 1.5s;">💖</span>
+        <span style="left: 95%; animation-delay: 3.5s;">💝</span>
+    </div>
+    
+    <a href="about.html" class="back-home">
+        <span>←</span> Back to Home
+    </a>
+    
+    <div class="container">
+        <div class="header-section">
+            <h1>22 Core Memories</h1>
+            <div class="subtitle">Moments that altered my brain chemistry forever 💫</div>
+        </div>
+        
+        <div class="memories-grid" id="memoriesGrid"></div>
+        
+        <div class="footer-message">
+            <p>Each of these memories is a treasure I carry in my heart</p>
+            <span>📸 💭 ✨</span>
+        </div>
+    </div>
+
+    <script>
+        const memories = [
+            { number: 1, text: "You feeding me when I was sick in high school", emoji: "🍲" },
+            { number: 2, text: "When you literally forced yourself to meet me in Alexia's to just sit with me in silence because you didn't know what was going on with me", emoji: "🤍" },
+            { number: 3, text: "One Thursday in 400l when we both didn't have money and you went out and came back inside with 2 plates of noodles (I honestly don't think I can ever recover from that act of kindness)", emoji: "🍜" },
+            { number: 4, text: "You donating to wefeed when I complained bitterly that we were very low on funds and the outreach was really close 🥹", emoji: "🤲" },
+            { number: 5, text: "When you texted my mums congratulations because Pastor Nath asked us to congratulate our loved ones (you didn't just stop with me🥹)", emoji: "📱" },
+            { number: 6, text: "My 21st birthday 🥹 I didn't even think we were in a good place and I deserved all that love but you still showed up (I cried that entire week🤣🤣)", emoji: "🎂" },
+            { number: 7, text: "Hearing you have a full blown conversation with my brother and it wasn't even weird like ah who is this girl really? 🤣", emoji: "🗣️" },
+            { number: 8, text: "Our first summer with the shittiest roommate ever, how you were the calm in the storm, ah I for don run mad that summer if not for you o🤣", emoji: "☀️" },
+            { number: 9, text: "2023 Summer, going to the market with 2k to buy egusi and bone to last us the week (we don suffer true true 😭😭)", emoji: "🏪" },
+            { number: 10, text: "Our very first Lagos weekend omg Jomi 🤣🤣🤣😭", emoji: "🌆" },
+            { number: 11, text: "Our many escapades in alexia's", emoji: "🏃‍♀️" },
+            { number: 12, text: "Percussion wave 🤣🤣🤣🤣(I don't have to say which one, you should already know 😭😭)", emoji: "🌊" },
+            { number: 13, text: "Carrying SR luxury on your head in our room in fad, you do pass me sef😂 i love you mhen", emoji: "💼" },
+            { number: 14, text: "Following ourselves to that office in Eah and bbs to avoid stories that touch 😭🤣", emoji: "🚶‍♀️" },
+            { number: 15, text: "Just knowing that you'll get all these things I'm coding is altering my brain chemistry sef 🤣", emoji: "💻" },
+            { number: 16, text: "Announcing me to the world any chance you get🤭 your stories, TikTok", emoji: "📢" },
+            { number: 17, text: "When you were always sending me the food you cooked in your house", emoji: "🍳" },
+            { number: 18, text: "When you borrowed me over 100k because I mentioned how I didn't want to be stranded and put gift in the reference because you were scared of tax ode 🤣🤣", emoji: "💰" },
+            { number: 19, text: "When you randomly sent money to my favourite banana bread vendor as gift voucher so I can order it whenever I want", emoji: "🍌" },
+            { number: 20, text: "When you carried one of my godchildren and she slept off in your arms", emoji: "👶" },
+            { number: 21, text: "How you always come to gist me about your men and laugh at yourself before I even get the chance to laugh at you 😭🤣", emoji: "😂" },
+            { number: 22, text: "Recording candid videos of me 🥹❤️", emoji: "📹" }
+        ];
+
+        const imageList = [
+            'image/bg2.jpeg',
+            'image/vcall.jpeg',
+            'image/selfie.jpeg',
+            'image/joms.jpeg',
+            'image/bg3.jpeg',
+            'image/us.jpeg',
+            'image/defence.jpeg',
+            'image/sipandpaint.jpeg'
+        ];
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        function getRandomIndices(total, count) {
+            const indices = Array.from({ length: total }, (_, i) => i);
+            return shuffleArray(indices).slice(0, count);
+        }
+
+        function renderMemories() {
+            const grid = document.getElementById('memoriesGrid');
+            grid.innerHTML = '';
+            
+            const randomImageIndices = getRandomIndices(memories.length, 8);
+            
+            memories.forEach((memory, index) => {
+                const hasImage = randomImageIndices.includes(index);
+                const card = document.createElement('div');
+                card.className = `memory-card ${hasImage ? 'with-image' : 'without-image'}`;
+                card.style.animationDelay = `${index * 0.05}s`;
+                
+                let imageHtml = '';
+                if (hasImage) {
+                    const randomImageIndex = randomImageIndices.indexOf(index);
+                    imageHtml = `
+                        <div class="memory-image">
+                            <img src="${imageList[randomImageIndex]}" alt="Memory ${memory.number}">
+                            <div class="image-overlay"></div>
+                        </div>
+                    `;
+                }
+                
+                card.innerHTML = `
+                    ${imageHtml}
+                    <div class="memory-number">${memory.number.toString().padStart(2, '0')}</div>
+                    <div class="memory-content">
+                        <div class="memory-text">${memory.text}</div>
+                        <div class="memory-emoji">${memory.emoji}</div>
+                    </div>
+                `;
+                
+                card.addEventListener('click', function() {
+                    this.style.transform = 'scale(1.05) rotate(0deg)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 200);
+                });
+                
+                grid.appendChild(card);
+            });
+        }
+
+        renderMemories();
+
+        document.querySelectorAll('.floating-memories span').forEach((span, index) => {
+            span.style.animationDuration = `${8 + Math.random() * 10}s`;
+        });
+    </script>
+</body>
+</html>
