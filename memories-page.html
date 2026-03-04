@@ -21,7 +21,6 @@
             background: linear-gradient(135deg, #1a0b2e 0%, #2d1b45 100%);
         }
         
-        /* Animated background */
         .gallery-bg {
             position: fixed;
             top: 0;
@@ -134,7 +133,6 @@
             border: 1px solid rgba(255,215,0,0.3);
         }
         
-        /* Gallery Grid */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -142,7 +140,6 @@
             margin-bottom: 50px;
         }
         
-        /* Memory Card with Image */
         .memory-card {
             position: relative;
             border-radius: 25px;
@@ -159,7 +156,6 @@
         .memory-card:nth-child(3n+2) { animation-delay: 0.2s; }
         .memory-card:nth-child(3n+3) { animation-delay: 0.3s; }
         
-        /* Image container */
         .card-image {
             width: 100%;
             height: 100%;
@@ -174,7 +170,6 @@
             transition: transform 0.8s ease;
         }
         
-        /* Gradient overlay */
         .card-overlay {
             position: absolute;
             top: 0;
@@ -190,7 +185,6 @@
             z-index: 1;
         }
         
-        /* Memory number badge */
         .memory-number {
             position: absolute;
             top: 15px;
@@ -211,7 +205,6 @@
             backdrop-filter: blur(2px);
         }
         
-        /* Memory content that appears on hover */
         .memory-content {
             position: absolute;
             bottom: 0;
@@ -245,7 +238,6 @@
             filter: drop-shadow(0 0 10px gold);
         }
         
-        /* Hover effects */
         .memory-card:hover {
             transform: translateY(-15px) scale(1.02);
             border-color: #ffd700;
@@ -260,7 +252,6 @@
             opacity: 0.4;
         }
         
-        /* Gold border animation */
         .memory-card::before {
             content: '';
             position: absolute;
@@ -287,11 +278,6 @@
             100% { background-position: 0% 0%; }
         }
         
-        /* Special animation for cards */
-        .memory-card {
-            position: relative;
-        }
-        
         .memory-card::after {
             content: '📸';
             position: absolute;
@@ -309,7 +295,6 @@
             50% { transform: scale(1.2); opacity: 1; }
         }
         
-        /* Lightbox effect for clicked images */
         .lightbox {
             position: fixed;
             top: 0;
@@ -335,55 +320,62 @@
         }
         
         .lightbox-content {
-            max-width: 800px;
-            width: 90%;
             position: relative;
-            animation: zoomIn 0.4s ease;
-        }
-        
-        @keyframes zoomIn {
-            from { transform: scale(0.8); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
+            width: 90vw;
+            height: 90vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         
         .lightbox-image {
-            width: 100%;
-            border-radius: 20px;
-            border: 4px solid #ffd700;
-            box-shadow: 0 0 50px rgba(255,215,0,0.3);
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            border-radius: 10px;
+            border: 3px solid #ffd700;
+            box-shadow: 0 0 30px rgba(255,215,0,0.3);
         }
         
         .lightbox-caption {
             position: absolute;
-            bottom: -60px;
-            left: 0;
-            right: 0;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
             color: white;
             text-align: center;
-            font-size: 1.2rem;
-            padding: 15px;
-            background: rgba(0,0,0,0.5);
+            font-size: 0.9rem;
+            padding: 8px 16px;
+            background: rgba(0,0,0,0.7);
             backdrop-filter: blur(5px);
-            border-radius: 50px;
+            border-radius: 30px;
             border: 1px solid #ffd700;
+            max-width: 80%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            z-index: 1002;
         }
         
         .close-lightbox {
             position: absolute;
-            top: -50px;
-            right: 0;
+            top: 20px;
+            right: 20px;
             background: rgba(255,215,0,0.2);
             color: white;
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
+            font-size: 1.8rem;
             cursor: pointer;
             border: 2px solid #ffd700;
             transition: all 0.3s ease;
+            z-index: 1001;
         }
         
         .close-lightbox:hover {
@@ -398,29 +390,31 @@
             transform: translateY(-50%);
             background: rgba(255,215,0,0.2);
             color: white;
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
+            font-size: 1.8rem;
             cursor: pointer;
             border: 2px solid #ffd700;
             transition: all 0.3s ease;
+            z-index: 1001;
         }
         
         .nav-btn:hover {
             background: #ffd700;
             color: #4a1b6d;
+            transform: translateY(-50%) scale(1.1);
         }
         
         .nav-btn.prev {
-            left: -70px;
+            left: 20px;
         }
         
         .nav-btn.next {
-            right: -70px;
+            right: 20px;
         }
         
         .footer-message {
@@ -481,17 +475,25 @@
                 font-size: 0.9rem;
             }
             
-            .nav-btn.prev {
-                left: 10px;
-            }
-            
-            .nav-btn.next {
-                right: 10px;
-            }
-            
             .lightbox-caption {
-                bottom: -80px;
-                font-size: 1rem;
+                font-size: 0.8rem;
+                padding: 6px 12px;
+                max-width: 90%;
+                bottom: 15px;
+            }
+            
+            .close-lightbox {
+                top: 10px;
+                right: 10px;
+                width: 35px;
+                height: 35px;
+                font-size: 1.5rem;
+            }
+            
+            .nav-btn {
+                width: 35px;
+                height: 35px;
+                font-size: 1.5rem;
             }
         }
         
@@ -522,7 +524,7 @@
         <span style="left: 95%; animation-delay: 3.5s;">📸</span>
     </div>
     
-    <a href="about.html" class="back-home">
+    <a href="index.html" class="back-home">
         <span>←</span> Back to Home
     </a>
     
@@ -537,11 +539,9 @@
         <div class="footer-message">
             <p>Each picture tells a story, each memory lives in my heart</p>
             <span>📸 💭 ✨</span>
-            
         </div>
     </div>
 
-    <!-- Lightbox -->
     <div class="lightbox" id="lightbox">
         <div class="lightbox-content">
             <span class="close-lightbox" id="closeLightbox">&times;</span>
@@ -562,7 +562,7 @@
             { number: 6, text: "My 21st birthday 🥹 I didn't even think we were in a good place and I deserved all that love but you still showed up (I cried that entire week🤣🤣)", emoji: "🎂", image: "image/jom6.jpeg" },
             { number: 7, text: "Hearing you have a full blown conversation with my brother and it wasn't even weird like ah who is this girl really? 🤣", emoji: "🗣️", image: "image/joms.jpeg" },
             { number: 8, text: "Our first summer with the shittiest roommate ever, how you were the calm in the storm, ah I for don run mad that summer if not for you o🤣", emoji: "☀️", image: "image/jom8.jpeg" },
-            { number: 9, text: "2023 Summer, going to Katangua market with 2k to buy egusi and bone to last us the week (we don suffer true true 😭😭)", emoji: "🏪", image: "image/jom9.jpeg" },
+            { number: 9, text: "2023 Summer, going to the market with 2k to buy egusi and bone to last us the week (we don suffer true true 😭😭)", emoji: "🏪", image: "image/jom9.jpeg" },
             { number: 10, text: "Our very first Lagos weekend omg Jomi 🤣🤣🤣😭", emoji: "🌆", image: "image/jom10.jpeg" },
             { number: 11, text: "Our many escapades in alexia's", emoji: "🏃‍♀️", image: "image/jom11.jpeg" },
             { number: 12, text: "Percussion wave 🤣🤣🤣🤣(I don't have to say which one, you should already know 😭😭)", emoji: "🌊", image: "image/jom12.jpeg" },
@@ -668,5 +668,3 @@
     </script>
 </body>
 </html>
-
-
